@@ -1,3 +1,17 @@
+       // ===== PRELOADER =====
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                
+                // Initialize animations after preloader hides
+                initBackgroundAnimation();
+                initScrollAnimations();
+                initNavigation();
+            }, 2000);
+        });
+
 
         // ===== BACKGROUND ANIMATION =====
         function initBackgroundAnimation() {
