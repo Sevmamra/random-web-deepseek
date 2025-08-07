@@ -1,16 +1,19 @@
        // ===== PRELOADER =====
-        window.addEventListener('load', function() {
-            const preloader = document.querySelector('.preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                
-                // Initialize animations after preloader hides
-                initBackgroundAnimation();
-                initScrollAnimations();
-                initNavigation();
-            }, 2000);
-        });
+window.addEventListener('load', function () {
+  const preloader = document.querySelector('.preloader');
+
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+
+      // Call initializers safely
+      if (typeof initBackgroundAnimation === 'function') initBackgroundAnimation();
+      if (typeof initScrollAnimations === 'function') initScrollAnimations();
+      if (typeof initNavigation === 'function') initNavigation();
+      // Add more if needed
+    }, 2000);
+  }
+});
 
 
         // ===== BACKGROUND ANIMATION =====
